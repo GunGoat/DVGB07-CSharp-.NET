@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="DVGB07_Inventory_App.Models.Book">
+    <Position X="9" Y="7.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAQAAACAAAAAAEAAIAABAAAAgAAAAAAAAAAAAAAFA=</HashCode>
+      <FileName>Models\Book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DVGB07_Inventory_App.Models.Game">
+    <Position X="10.75" Y="7.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEACAAAAAAAAAAAAAACAAAAAAAABA=</HashCode>
+      <FileName>Models\Game.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DVGB07_Inventory_App.Models.Movie">
+    <Position X="12.5" Y="7.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAEABAAAAAAAAgAAAAAAAAAAAAAAFA=</HashCode>
+      <FileName>Models\Movie.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DVGB07_Inventory_App.Models.Product">
+    <Position X="9.25" Y="3.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="DVGB07_Inventory_App.ViewModels.PropertyChangedBase" FixedToPoint="true">
+      <Path>
+        <Point X="10.125" Y="2.247" />
+        <Point X="10.125" Y="3.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AgACIAAAAQAAAAAEAIgAAAQAgAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Models\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DVGB07_Inventory_App.Models.Receipt">
+    <Position X="11.5" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Items" Type="DVGB07_Inventory_App.Models.ReceiptItem">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.058" Y="0.425" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAKAAEAIAAAAAAABAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Receipt.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Items" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DVGB07_Inventory_App.Models.ReceiptItem">
+    <Position X="12" Y="3.75" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="DVGB07_Inventory_App.ViewModels.PropertyChangedBase" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.125" Y="2.247" />
+        <Point X="10.125" Y="3.5" />
+        <Point X="12.375" Y="3.5" />
+        <Point X="12.375" Y="3.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAFAAAAgAAAAAAAAAAAAAAAgAAIAAA=</HashCode>
+      <FileName>Models\ReceiptItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DVGB07_Inventory_App.ViewModels.PropertyChangedBase">
+    <Position X="9" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\PropertyChangedBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

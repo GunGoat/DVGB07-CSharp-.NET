@@ -1,0 +1,14 @@
+﻿<Application x:Class="DVGB07_Inventory_App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DVGB07_Inventory_App"
+             StartupUri="Views/InventoryWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Reference the AppStyles.xaml -->
+                <ResourceDictionary Source="Views/Styles/AppStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

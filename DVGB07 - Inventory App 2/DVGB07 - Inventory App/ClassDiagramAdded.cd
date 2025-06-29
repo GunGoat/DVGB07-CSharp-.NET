@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="DVGB07_Inventory_App.Service.ApiService">
+    <Position X="10.25" Y="9.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>ABAAAEAgAAAAAAAAABAAAAAAGAAAACAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Service\ApiService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DVGB07_Inventory_App.Service.TimerService">
+    <Position X="10.25" Y="13" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAgAAAAAAAEAAAAAAAAACAAIAAAAAAAAAA=</HashCode>
+      <FileName>Service\TimerService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DVGB07_Inventory_App.ViewModels.Dialog.PriceAndStockLogsDialogViewModel">
+    <Position X="14.75" Y="13" Width="3.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAgABAAAAAAEIAIABCAAAAAgAAAAAAAQEgAAAEDAAAA=</HashCode>
+      <FileName>ViewModels\Dialog\PriceAndStockLogsDialogViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="DVGB07_Inventory_App.Service.IApiService">
+    <Position X="14.5" Y="9.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service\IApiService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DVGB07_Inventory_App.Service.ITimerService">
+    <Position X="12.5" Y="13" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAEAAAAAAAAACAAIAAAAAAAAAA=</HashCode>
+      <FileName>Service\ITimerService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

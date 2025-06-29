@@ -1,0 +1,137 @@
+﻿<Window x:Class="DVGB07_Lottery_App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DVGB07_Lottery_App"
+        mc:Ignorable="d"
+        Title="DVGB07 - Lottery App" Height="420" Width="350"
+        ResizeMode="NoResize">
+
+    <!-- Define static resources -->
+    <Window.Resources>
+        <Style x:Key="InputBoxStyle" TargetType="TextBox">
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="MaxLength" Value="2"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <!-- Define grid rows and columns -->
+        <Grid.RowDefinitions>
+            <!-- Title -->
+            <RowDefinition Height="Auto"/>
+            <!-- Lottery Numbers -->
+            <RowDefinition Height="Auto"/>
+            <!--Iteration Number and Play Button -->
+            <RowDefinition Height="Auto"/>
+            <!-- Results -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Title -->
+        <TextBlock Grid.Row="0"
+                   Text="Lottery App" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Top" 
+                   Margin="10"/>
+
+        <!-- Lottery Numbers-->
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBlock Text="Enter 7 unique numbers in the range 1 - 35."
+               FontSize="14"
+               HorizontalAlignment="Center"
+               Margin="0,10,0,0"/>
+            <StackPanel x:Name="NumberInputPanel" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox Style="{StaticResource InputBoxStyle}" Tag="LotteryNumber" PreviewTextInput="OnlyNumbers" TextChanged="ValidateLotteryInput"/>
+                <TextBox Style="{StaticResource InputBoxStyle}" Tag="LotteryNumber" PreviewTextInput="OnlyNumbers" TextChanged="ValidateLotteryInput"/>
+                <TextBox Style="{StaticResource InputBoxStyle}" Tag="LotteryNumber" PreviewTextInput="OnlyNumbers" TextChanged="ValidateLotteryInput"/>
+                <TextBox Style="{StaticResource InputBoxStyle}" Tag="LotteryNumber" PreviewTextInput="OnlyNumbers" TextChanged="ValidateLotteryInput"/>
+                <TextBox Style="{StaticResource InputBoxStyle}" Tag="LotteryNumber" PreviewTextInput="OnlyNumbers" TextChanged="ValidateLotteryInput"/>
+                <TextBox Style="{StaticResource InputBoxStyle}" Tag="LotteryNumber" PreviewTextInput="OnlyNumbers" TextChanged="ValidateLotteryInput"/>
+                <TextBox Style="{StaticResource InputBoxStyle}" Tag="LotteryNumber" PreviewTextInput="OnlyNumbers" TextChanged="ValidateLotteryInput"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Iteration Number and Play Button -->
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBlock Text="Enter the number of iterations and press 'Play!'"
+               FontSize="14"
+               HorizontalAlignment="Center"
+               Margin="0,10,0,0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox x:Name="IterationNumberInput"
+                    Width="190"
+                    Height="30"
+                    VerticalContentAlignment="Center"
+                    Margin="5"
+                    PreviewTextInput="OnlyNumbers"
+                    MaxLength="6"
+                    TextChanged="ValidateLotteryInput"/>
+                <Button x:Name="PlayButton"
+                    Content="Play!"
+                    Width="75"
+                    Height="30"
+                    Margin="5"
+                    Click="PlayButton_Click"
+                    IsEnabled="False"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Results -->
+        <Border Grid.Row="3" 
+            Margin="10" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            BorderBrush="Black" 
+            BorderThickness="1" 
+            CornerRadius="2"
+            Padding="10"
+            Width="280">
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="Results" HorizontalAlignment="Center" FontSize="16"/>
+
+                <!-- Five Correct Answers -->
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBox Width="100" 
+                     IsReadOnly="True" 
+                     Name="FiveCorrectOutput" 
+                     Margin="5"/>
+                    <TextBlock Text="5 Correct Numbers!" 
+                       VerticalAlignment="Center" 
+                       Margin="5"/>
+                </StackPanel>
+
+                <!-- Six Correct Answers -->
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBox Width="100" 
+                     IsReadOnly="True" 
+                     Name="SixCorrectOutput" 
+                     Margin="5"/>
+                    <TextBlock Text="6 Correct Numbers!" 
+                       VerticalAlignment="Center" 
+                       Margin="5"/>
+                </StackPanel>
+
+                <!-- Seven Correct Answers -->
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBox Width="100" 
+                     IsReadOnly="True" 
+                     Name="SevenCorrectOutput" 
+                     Margin="5"/>
+                    <TextBlock Text="7 Correct Numbers!" 
+                       VerticalAlignment="Center" 
+                       Margin="5"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

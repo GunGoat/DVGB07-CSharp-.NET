@@ -1,0 +1,90 @@
+﻿<Window x:Class="DVGB07_Inventory_App.InventoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DVGB07_Inventory_App" 
+        xmlns:template="clr-namespace:DVGB07_Inventory_App.Views.Template"
+        xmlns:views="clr-namespace:DVGB07_Inventory_App.Views"
+        mc:Ignorable="d"
+        Title="Inventory Management" Height="600" Width="1080" MinHeight="600" MinWidth="1080">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <ToolBarTray Grid.Row="0">
+            <ToolBar>
+                <!-- Store Button -->
+                <Button ToolTip="Go to Store" Click="GoToStoreButton_Click" Margin="5,0,5,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Resources/Icons/Store.png" Width="24" Height="24"/>
+                        <TextBlock Text="Go to Store" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button>
+
+                <!-- Popular Products Button -->
+                <Button ToolTip="New" Command="{Binding PopularProductsCommand}" Margin="5,0,5,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Resources/Icons/PopularProducts.png" Width="24" Height="24"/>
+                        <TextBlock Text="Popular Products" VerticalAlignment="Center"  Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button>
+
+                <!-- Price & Stock Log -->
+                <Button ToolTip="Visualizes how the stock and price have evolved over time." Command="{Binding PriceAndStockLogsCommand}" Margin="5,0,5,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Resources/Icons/PriceAndStockLogs.png" Width="24" Height="24"/>
+                        <TextBlock Text="Price &#38; Stock Log" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button>
+
+                <!--  Synchronize Upload Products Button -->
+                <Button ToolTip="Uploads stock from the local product to the online product." Command="{Binding SyncUploadProductsCommand}" Margin="5,0,5,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Resources/Icons/SyncUpload.png" Width="24" Height="24"/>
+                        <TextBlock Text="Sync Upload" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button>
+
+                <!--  Synchronize Download Products Button -->
+                <Button ToolTip="Downloads price and stock from the online product to the local product." Command="{Binding SyncDownloadProductsCommand}" Margin="5,0,5,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Resources/Icons/SyncDownload.png" Width="24" Height="24"/>
+                        <TextBlock Text="Sync Download" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button>
+
+                <!-- Warning Message -->
+                <TextBlock Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="5,0,5,0" Visibility="{Binding SyncWarningVisibility}">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="⚠ Error: {0}">
+                            <Binding Path="SyncWarningMessage"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </ToolBar>
+        </ToolBarTray>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1">
+            <StackPanel Margin="10" Width="Auto" HorizontalAlignment="Center">
+                <!-- Books Section -->
+                <Border Style="{StaticResource BorderStyle}">
+                    <views:BooksWindow/>
+                </Border>
+
+                <!-- Games Section -->
+                <Border Style="{StaticResource BorderStyle}">
+                    <views:GamesWindow/>
+                </Border>
+
+                <!-- Movies Section -->
+                <Border Style="{StaticResource BorderStyle}">
+                    <views:MoviesWindow/>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

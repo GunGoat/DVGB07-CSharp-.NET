@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="DVGB07_Inventory_App.Views.Template.LabelledIntegerBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Name="Root">
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="{Binding LabelText, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                   VerticalAlignment="Center" 
+                   Grid.Column="0" Margin="0,0,5,0"/>
+
+        <TextBox Text="{Binding InputText, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Column="1" 
+                 HorizontalAlignment="Stretch"
+                 PreviewTextInput="TextBox_PreviewTextInput" />
+    </Grid>
+</UserControl>

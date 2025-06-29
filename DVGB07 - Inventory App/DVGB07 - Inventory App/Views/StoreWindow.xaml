@@ -1,0 +1,80 @@
+﻿<Window x:Class="DVGB07_Inventory_App.Views.StoreWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DVGB07_Inventory_App.Views"
+        xmlns:views="clr-namespace:DVGB07_Inventory_App.Views"
+        mc:Ignorable="d"
+        Title="Store Management" Height="600" Width="1080" MinHeight="600" MinWidth="1080">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ToolBarTray Grid.Row="0">
+            <ToolBar>
+                <!-- Inventory Button -->
+                <Button ToolTip="Go to Inventory" Click="GoToInventoryButton_Click" Margin="5,0,5,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Resources/Icons/Inventory.png" Width="24" Height="24"/>
+                        <TextBlock Text="Go to Inventory" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button>
+
+                <!-- Popular Products Button -->
+                <Button ToolTip="New" Command="{Binding PopularProducts}" Margin="5,0,5,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="pack://application:,,,/Resources/Icons/PopularProducts.png" Width="24" Height="24"/>
+                        <TextBlock Text="Popular Products" VerticalAlignment="Center"  Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <!-- Inventory -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="0">
+                <StackPanel Margin="10" HorizontalAlignment="Center">
+                    <!-- Books Section -->
+                    <Border Style="{StaticResource BorderStyle}">
+                        <views:BooksWindow/>
+                    </Border>
+
+                    <!-- Games Section -->
+                    <Border Style="{StaticResource BorderStyle}">
+                        <views:GamesWindow/>
+                    </Border>
+
+                    <!-- Movies Section -->
+                    <Border Style="{StaticResource BorderStyle}">
+                        <views:MoviesWindow/>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+            
+            <!--- Cart & Receipt -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="1">
+                <TabControl>
+                    <TabItem Header="Current Cart">
+                        <Border Style="{StaticResource BorderStyle}">
+                            <views:CartWindow/>
+                        </Border>
+                    </TabItem>
+                    <TabItem Header="Previous Purchases">
+                        <Border Style="{StaticResource BorderStyle}">
+                            <views:ReceiptsWindow/>
+                        </Border>
+                    </TabItem>
+                </TabControl>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>

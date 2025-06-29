@@ -1,0 +1,172 @@
+﻿<Window x:Class="DVGB07_Calculator_App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="DVGB07 - Calculator App" Height="400" Width="500"
+        ResizeMode="NoResize">
+    <Window.Resources>
+        <!-- Style for Regular Buttons -->
+        <Style x:Key="RegularButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Background" Value="LightGray" />
+            <Setter Property="Margin" Value="2" />
+        </Style>
+
+        <!-- Style for Dark Buttons (Last Column) -->
+        <Style x:Key="DarkButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Background" Value="Gray" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Margin" Value="2" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <!-- Title Text -->
+            <RowDefinition Height="Auto" />
+            <!-- Output Section & History Section -->
+            <RowDefinition Height="Auto" />
+            <!-- Buttons -->
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2.5*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Title Text -->
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="5" 
+                   Text="Calculator App" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   Margin="0,0,0,10" />
+
+        <!-- Output Section -->
+        <Border Grid.Row="1" Grid.ColumnSpan="4"
+                BorderBrush="Black"
+                BorderThickness="1"
+                Margin="0,0,0,10"
+                Padding="2">
+            <StackPanel>
+                <TextBox x:Name="DisplayTextbox01" 
+                 FontSize="16" 
+                 Text="" 
+                 IsReadOnly="True" 
+                 Focusable="False" 
+                 IsTabStop="False"
+                 Cursor="Arrow"
+                 BorderBrush="Transparent"
+                 HorizontalAlignment="Stretch" 
+                 VerticalAlignment="Center" 
+                 TextAlignment="Right" 
+                 VerticalContentAlignment="Center"
+                 Margin="0" 
+                 Height="30"/>
+
+                <TextBox x:Name="DisplayTextbox02" 
+                 FontSize="20" 
+                 Text="0" 
+                 IsReadOnly="True" 
+                 Focusable="False" 
+                 IsTabStop="False"
+                 Cursor="Arrow"
+                 BorderBrush="Transparent"
+                 HorizontalAlignment="Stretch" 
+                 VerticalAlignment="Center" 
+                 TextAlignment="Right" 
+                 VerticalContentAlignment="Center"
+                 Height="40" />
+            </StackPanel>
+        </Border>
+
+        <!-- History Section -->
+        <Border Grid.Row="1" Grid.Column="5" Grid.RowSpan="5"
+                BorderBrush="Black"
+                BorderThickness="1"
+                Margin="10,0,0,0"
+                Padding="5">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Padding="5">
+                <StackPanel>
+                    <!-- History Header -->
+                    <TextBlock Text="History" 
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Right"
+                FontWeight="Bold"
+                Margin="0,0,0,5"/>
+
+                    <!-- History List -->
+                    <ListBox x:Name="HistoryListBox" ItemsSource="{Binding History}" VerticalAlignment="Stretch"  Background="Transparent" BorderThickness="0">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListBoxItem">
+                                            <ContentPresenter />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,0,0,5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Right-aligned equation -->
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Equation}" FontSize="12" FontWeight="Normal" TextAlignment="Right" TextWrapping="Wrap"/>
+
+                                    <!-- Right-aligned result -->
+                                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Result}" FontSize="12" FontWeight="Bold" TextAlignment="Right" TextWrapping="Wrap"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <!-- Buttons -->
+        <Button Grid.Row="2" Grid.Column="0" Content="1" Style="{StaticResource RegularButtonStyle}" Click="Button_Click" />
+        <Button Grid.Row="2" Grid.Column="1" Content="2" Style="{StaticResource RegularButtonStyle}" Click="Button_Click" />
+        <Button Grid.Row="2" Grid.Column="2" Content="3" Style="{StaticResource RegularButtonStyle}" Click="Button_Click" />
+        <Button Grid.Row="2" Grid.Column="3" Content="+" Style="{StaticResource DarkButtonStyle}" Click="Button_Click" />
+
+        <Button Grid.Row="3" Grid.Column="0" Content="4" Style="{StaticResource RegularButtonStyle}" Click="Button_Click" />
+        <Button Grid.Row="3" Grid.Column="1" Content="5" Style="{StaticResource RegularButtonStyle}" Click="Button_Click" />
+        <Button Grid.Row="3" Grid.Column="2" Content="6" Style="{StaticResource RegularButtonStyle}" Click="Button_Click" />
+        <Button Grid.Row="3" Grid.Column="3" Content="-" Style="{StaticResource DarkButtonStyle}" Click="Button_Click" />
+
+        <Button Grid.Row="4" Grid.Column="0" Content="7" Style="{StaticResource RegularButtonStyle}" Click="Button_Click" />
+        <Button Grid.Row="4" Grid.Column="1" Content="8" Style="{StaticResource RegularButtonStyle}" Click="Button_Click" />
+        <Button Grid.Row="4" Grid.Column="2" Content="9" Style="{StaticResource RegularButtonStyle}" Click="Button_Click" />
+        <Button Grid.Row="4" Grid.Column="3" Content="*" Style="{StaticResource DarkButtonStyle}" Click="Button_Click" />
+
+        <Button Grid.Row="5" Grid.Column="0" Content="C" Style="{StaticResource DarkButtonStyle}" Click="Button_Click" />
+        <Button Grid.Row="5" Grid.Column="1" Content="0" Style="{StaticResource RegularButtonStyle}" Click="Button_Click" />
+        <Button Grid.Row="5" Grid.Column="2" Content="=" Style="{StaticResource DarkButtonStyle}" Click="Button_Click" />
+        <Button Grid.Row="5" Grid.Column="3" Content="/" Style="{StaticResource DarkButtonStyle}" Click="Button_Click" />
+    </Grid>
+</Window>

@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="DVGB07_Inventory_App.Views.MoviesWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DVGB07_Inventory_App.Views"
+             xmlns:template="clr-namespace:DVGB07_Inventory_App.Views.Template"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Grid.Row="0" Text="Movies" HorizontalAlignment="Center" FontSize="18"/>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
+            <GroupBox Header="Inventory Actions" Style="{StaticResource GroupBoxStyle}" Visibility="{Binding InventoryActionsVisibility}">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button Content="Add" Command="{Binding AddMovieCommand}" Style="{StaticResource ButtonStyle}"/>
+                    <Button Content="Update" Command="{Binding UpdateMovieCommand}" CommandParameter="{Binding SelectedMovie}" Style="{StaticResource ButtonStyle}"/>
+                    <Button Content="Remove" Command="{Binding RemoveProductCommand}" CommandParameter="{Binding SelectedMovie}" Style="{StaticResource ButtonStyle}"/>
+                    <Button Content="Refill Stock" Command="{Binding RefillStockCommand}" CommandParameter="{Binding SelectedMovie}" Style="{StaticResource ButtonStyle}"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Products Actions" Style="{StaticResource GroupBoxStyle}" Visibility="{Binding StoreActionsVisibility}">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button Content="Add to cart" Command="{Binding AddToCartCommand}" CommandParameter="{Binding SelectedMovie}" Style="{StaticResource ButtonStyle}"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Filter Actions" Style="{StaticResource GroupBoxStyle}">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <!--<Button Content="Apply" Command="{Binding ApplyProductFilter}" CommandParameter="{Binding MovieFilterOptions}" IsEnabled="{Binding MovieFilterOptions.AnyFilterEnabled}" Style="{StaticResource ButtonStyle}"/>-->
+                    <Button Content="Clear" Command="{Binding ClearProductFilter}" CommandParameter="{Binding MovieFilterOptions}"  IsEnabled="{Binding MovieFilterOptions.AnyFilterEnabled}" Style="{StaticResource ButtonStyle}"/>
+                    <ToggleButton Name="toggleButton" Click="ToggleButton_Click" Content="Show" Style="{StaticResource ToggleButtonStyle}"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+
+        <!-- Filter Options -->
+        <GroupBox x:Name="filterOptions" Header="Filter Inputs" Grid.Row="2" Margin="0,0,0,10" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <template:LabelledTextBox Grid.Row="0" Grid.Column="0" LabelText="Name:" InputText="{Binding MovieFilterOptions.Name, Mode=TwoWay}"/>
+                <template:LabelledTextBox Grid.Row="0" Grid.Column="1" LabelText="Format:" InputText="{Binding MovieFilterOptions.Format, Mode=TwoWay}"/>
+                <template:LabelledNumberBox Grid.Row="0" Grid.Column="2" LabelText="Min Price:" InputText="{Binding MovieFilterOptions.MinPrice, Mode=TwoWay}"/>
+                <template:LabelledNumberBox Grid.Row="1" Grid.Column="0" LabelText="Max Price:" InputText="{Binding MovieFilterOptions.MaxPrice, Mode=TwoWay}"/>
+                <template:LabelledIntegerBox Grid.Row="1" Grid.Column="1" LabelText="Min Playtime:" InputText="{Binding MovieFilterOptions.MinPlaytime, Mode=TwoWay}"/>
+                <template:LabelledIntegerBox Grid.Row="1" Grid.Column="2" LabelText="Max Playtime:" InputText="{Binding MovieFilterOptions.MaxPlaytime, Mode=TwoWay}"/>
+            </Grid>
+        </GroupBox>
+
+        <!-- DataGrid -->
+        <DataGrid Grid.Row="3" ItemsSource="{Binding MoviesView}" 
+                   SelectedItem="{Binding SelectedMovie}"
+                   AutoGenerateColumns="False" 
+                   CanUserSortColumns="True" 
+                   CanUserAddRows="False" 
+                   SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat=C}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Format" Binding="{Binding Format}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Playtime" Binding="{Binding Playtime}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Stock" Binding="{Binding Stock}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
